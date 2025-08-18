@@ -10,3 +10,25 @@ bool isCovered(int** ranges, int rangesSize, int* rangesColSize, int left, int r
     
     return ((right-left+1)==c)? true : false ;
 }
+
+/////////////////////////////////////////////////////////////////
+
+
+bool isCovered(int** ranges, int rangesSize, int* rangesColSize, int left, int right) {
+    int c[52]= {0};
+
+    for(int j = 0 ; j<rangesSize ; j++){
+        c[ranges[j][0]]++;
+        c[ranges[j][1]+1]--;
+    }
+    
+
+    for (int i=1 ; i<52  ; i++){
+        c[i] = c[i-1] + c[i];
+    }
+    for (int i = left ; i<right+1 ; i++){
+        if (!c[i])
+            return false;
+    }
+    return true;
+}
