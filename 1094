@@ -1,0 +1,16 @@
+bool carPooling(int** trips, int tripsSize, int* tripsColSize, int capacity) {
+    long int Bus[1001] = {0};
+
+    for (int i=0; i< tripsSize ; i++){
+        Bus[trips[i][1]] += trips[i][0];
+        Bus[trips[i][2]] -=trips[i][0];
+    }
+    
+    for (int i=0 ; i<1001 ; i++){
+        if (i>0)
+            Bus[i] +=Bus[i-1];
+        if (Bus[i]>capacity)
+            return false;
+    }
+    return true;
+}
