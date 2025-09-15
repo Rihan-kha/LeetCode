@@ -6,3 +6,25 @@ public:
         return (s==t);
     }
 };
+///////////////////////////////////////////////
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        unordered_map<char,int>mp1;
+        unordered_map<char,int>mp2;
+        for(int i=0;i<s.length(); i++){
+            mp1[s[i]]++;
+        }
+        for(int j=0;j<s.length(); j++){
+              mp2[t[j]]++;
+        }
+        if(mp1.size()!=mp2.size()) return false;
+        for(char ch='a';ch<='z';ch++){
+            if(mp1[ch]!=mp2[ch]) return false;
+        }
+        return true;
+    }
+};
