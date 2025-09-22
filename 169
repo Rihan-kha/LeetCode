@@ -6,3 +6,42 @@ public:
         return nums[n/2];
     }
 };
+
+
+///Another method
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int,int> a;
+        for(int i:nums)
+            a[i]++;
+        int maxval=nums[0];
+        for(auto x:a)
+        {
+            if(x.second>a[maxval])
+                maxval=x.first;
+        }
+        return maxval;
+    }
+};
+
+//python method
+
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        d={}
+        for i in nums:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] = d[i]+1
+        max = nums[0]
+        for i in d:
+            if d[i]>d[max]:
+                max = i
+        return max
+        
