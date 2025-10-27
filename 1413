@@ -1,0 +1,11 @@
+int minStartValue(int* nums, int numsSize) {
+    int min = nums[0];
+    int sum = 0;
+    for (int i= 0 ; i< numsSize ; i++){
+        sum += nums[i];
+
+        min = (min<sum)?min:sum;
+    }
+    min = (1>1-min)?1:1-min;
+    return min;
+}
