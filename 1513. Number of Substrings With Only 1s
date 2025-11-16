@@ -1,0 +1,27 @@
+class Solution(object):
+    def numSub(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        n = len(s)
+        n_sub = 0
+        count = 0
+
+        lst = s.split("0")
+        for i in lst:
+            count += (len(i)*(len(i)+1)/2)
+
+        # for i in range(n):
+        #     n_sub += 1
+        #     if (s[i]=='0'):
+        #         n_sub -=1
+        #         n_sub = n_sub*(n_sub+1)/2
+        #         count = count +  n_sub
+        #         n_sub = 0
+
+        # if (s[-1] =='1'):
+
+        #     count = count +  (n_sub*(n_sub+1)/2)
+
+        return count%(10**9 + 7)
